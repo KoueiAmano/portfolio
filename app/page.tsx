@@ -1,65 +1,117 @@
-import Image from "next/image";
+import { FaBookOpen, FaEnvelope, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { BlogCard } from "@/components/portfolio/blog-card";
+import { CareerCard } from "@/components/portfolio/career-card";
+import { ContactCard } from "@/components/portfolio/contact-card";
+import { FeaturedProjectCard } from "@/components/portfolio/featured-project-card";
+import { ProfileCard } from "@/components/portfolio/profile-card";
+import { SocialCard } from "@/components/portfolio/social-card";
+import { TechStackCard } from "@/components/portfolio/tech-stack-card";
+import { WorksCard } from "@/components/portfolio/works-card";
+
+const techStack = [
+  "HTML/CSS",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Tailwind",
+  "Ruby",
+  "Ruby on Rails",
+];
+
+const featuredProject = {
+  title: "Aima",
+  description:
+    "ふとできた“あいま”の時間を無駄にしないためのアプリ。操作はボタンを押すだけ。直感的なUXを意識しました。",
+  tags: ["Next.js", "TypeScript", "Ruby", "Ruby on Rails"],
+  liveHref: "#contact",
+  repoHref: "#social",
+};
+
+const sideProject = {
+  title: "自我チェス",
+  description: "駒たちが“自我”を持っているチェス",
+  liveHref: "#contact",
+  repoHref: "#social",
+};
+
+const careerHistory = [
+  {
+    period: "2025/8",
+    company: "RIZAPテクノロジーズ株式会社",
+    role: "3days インターン",
+    summary: "バックエンド",
+  },
+  {
+    period: "2024 - 2025",
+    company: "株式会社 魔法アプリ",
+    role: "アルバイト",
+    summary: "ゲーム開発",
+  },
+  {
+    period: "2024/4",
+    company: "日本工学院専門学校 入学",
+    role: "ITスペシャリスト科",
+  },
+];
+
+const socialLinks = [
+  {
+    href: "#social",
+    label: "GitHub",
+    icon: FaGithub,
+  },
+  {
+    href: "#blog",
+    label: "Blog",
+    icon: FaBookOpen,
+  },
+  {
+    href: "#contact",
+    label: "Contact",
+    icon: FaEnvelope,
+  },
+  {
+    href: "#social",
+    label: "X",
+    icon: FaXTwitter,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-[var(--color-page)] px-4 py-6 text-[var(--color-ink)] sm:px-6 lg:px-8 lg:py-8">
+      <div className="mx-auto flex w-full max-w-[1328px] flex-col gap-6 lg:gap-8">
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,2.15fr)_minmax(320px,0.95fr)] lg:items-start">
+          <ProfileCard />
+          <div
+            id="social"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 lg:grid-rows-[150px_150px]"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <SocialCard links={socialLinks} />
+            <BlogCard href="#blog" />
+          </div>
+        </section>
+
+        <section
+          id="projects"
+          className="grid gap-6 lg:grid-cols-[minmax(0,446px)_minmax(0,1fr)]"
+        >
+          <TechStackCard items={techStack} />
+          <FeaturedProjectCard project={featuredProject} />
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,630px)_minmax(0,653px)]">
+          <WorksCard project={sideProject} />
+          <CareerCard items={careerHistory} />
+        </section>
+
+        <ContactCard />
+
+        <footer className="pb-2 pt-8 text-center text-[13px] font-semibold text-[var(--color-muted)] sm:pt-12">
+          © 2026 Kouei Amano. All rights reserved.
+        </footer>
+      </div>
+    </main>
   );
 }
