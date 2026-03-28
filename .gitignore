@@ -23,6 +23,12 @@
 # misc
 .DS_Store
 *.pem
+.codex/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
 
 # debug
 npm-debug.log*
